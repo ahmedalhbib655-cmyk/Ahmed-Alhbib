@@ -1,1 +1,359 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مكتبة المحاضرات</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma;
+}
+
+body{
+background:#f4f6f9;
+}
+
+header{
+background:#0d6efd;
+padding:20px;
+color:white;
+text-align:center;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:10px;
+font-weight:bold;
+font-size:18px;
+}
+
+nav a:hover{
+color:yellow;
+}
+
+section{
+display:none;
+padding:30px;
+}
+
+.active{
+display:block;
+}
+
+.hero{
+text-align:center;
+padding:50px;
+}
+
+button{
+background:#0d6efd;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#084298;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+footer{
+background:#0d6efd;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:30px;
+}
+
+.form-box{
+max-width:500px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.contact-icons{
+text-align:center;
+margin-top:20px;
+}
+
+.contact-icons a{
+font-size:35px;
+text-decoration:none;
+margin:10px;
+}
+
+.contact-icons p{
+margin-top:10px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<h1>📚 مكتبة المحاضرات</h1>
+
+<nav id="guestMenu">
+
+<a href="#" onclick="showPage('login')">
+تسجيل الدخول
+</a>
+
+<a href="#" onclick="showPage('register')">
+إنشاء حساب
+</a>
+
+</nav>
+
+<nav id="userMenu" style="display:none;">
+
+<a href="#" onclick="showPage('home')">
+الرئيسية
+</a>
+
+<a href="#" onclick="showPage('lectures')">
+المحاضرات
+</a>
+
+<a href="#" onclick="showPage('upload')">
+رفع محاضرة
+</a>
+
+<a href="#" onclick="logout()">
+تسجيل الخروج
+</a>
+
+</nav>
+
+</header>
+
+<!-- تسجيل الدخول -->
+
+<section id="login" class="active">
+
+<div class="form-box">
+
+<h2>تسجيل الدخول</h2>
+
+<input type="email" id="loginEmail" placeholder="البريد الإلكتروني">
+
+<input type="password" id="loginPassword" placeholder="كلمة المرور">
+
+<button onclick="login()">
+دخول
+</button>
+
+<div class="contact-icons">
+
+<a href="tel:+249115309500">اتصل بنا</a>
+
+<a href="https://wa.me/249115309500" target="_blank">Whatsapp</a>
+
+<p>تواصل معنا</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- إنشاء حساب -->
+
+<section id="register">
+
+<div class="form-box">
+
+<h2>إنشاء حساب</h2>
+
+<input type="text" id="registerName" placeholder="الاسم">
+
+<input type="email" id="registerEmail" placeholder="البريد الإلكتروني">
+
+<input type="password" id="registerPassword" placeholder="كلمة المرور">
+
+<button onclick="registerUser()">
+تسجيل
+</button>
+
+</div>
+
+</section>
+
+<!-- الصفحة الرئيسية -->
+
+<section id="home">
+
+<div class="hero">
+
+<h2>مرحباً بك في مكتبة المحاضرات</h2>
+
+<p>
+شارك محاضراتك وقم بتحميل ملفات PDF و PPT بسهولة
+</p>
+
+<br>
+
+<button onclick="showPage('lectures')">
+تصفح المحاضرات
+</button>
+
+</div>
+
+</section>
+
+<!-- المحاضرات -->
+
+<section id="lectures">
+
+<h2>المحاضرات المتاحة</h2>
+
+<div class="card">
+<h3>برمجة 1</h3>
+<p>ملف PDF</p>
+<button>تحميل</button>
+</div>
+
+<div class="card">
+<h3>قواعد البيانات</h3>
+<p>ملف PPT</p>
+<button>تحميل</button>
+</div>
+
+<div class="card">
+<h3>تصميم المواقع</h3>
+<p>ملف PDF</p>
+<button>تحميل</button>
+</div>
+
+</section>
+
+<!-- رفع محاضرة -->
+
+<section id="upload">
+
+<div class="form-box">
+
+<h2>رفع محاضرة</h2>
+
+<input type="text" placeholder="اسم المادة">
+
+<input type="text" placeholder="عنوان المحاضرة">
+
+<input type="file">
+
+<button onclick="uploadLecture()">
+رفع المحاضرة
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+جميع الحقوق محفوظة © مكتبة المحاضرات
+
+</footer>
+
+<script>
+
+function showPage(page){
+
+let sections=document.querySelectorAll("section");
+
+sections.forEach(function(sec){
+sec.classList.remove("active");
+});
+
+document.getElementById(page).classList.add("active");
+
+}
+
+function login(){
+
+document.getElementById("loginEmail").value="";
+document.getElementById("loginPassword").value="";
+
+document.getElementById("guestMenu").style.display="none";
+
+document.getElementById("userMenu").style.display="block";
+
+showPage("home");
+
+alert("تم تسجيل الدخول بنجاح");
+
+}
+
+function logout(){
+
+document.getElementById("guestMenu").style.display="block";
+
+document.getElementById("userMenu").style.display="none";
+
+showPage("login");
+
+alert("تم تسجيل الخروج");
+
+}
+
+function registerUser(){
+
+document.getElementById("registerName").value="";
+document.getElementById("registerEmail").value="";
+document.getElementById("registerPassword").value="";
+
+alert("تم إنشاء الحساب بنجاح");
+
+showPage("login");
+
+}
+
+function uploadLecture(){
+
+alert("سيتم ربط رفع الملفات بـ PHP لاحقاً");
+
+}
+
+</script>
+
+</body>
+</html>
+
